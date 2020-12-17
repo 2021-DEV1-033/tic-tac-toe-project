@@ -34,18 +34,6 @@ class TicTacToeGameTest {
 	@Test
 	void winAGameTest() {		
 		Game game = new Game(new Player("player 1"), new Player("player 2"));
-		TicTacToeBoard board = new TicTacToeBoard(game);
-		game.setBoard(board);
-		board.getPositions().add(new BoardPosition(0, 0, board));
-		board.getPositions().add(new BoardPosition(0, 1, board));
-		board.getPositions().add(new BoardPosition(0, 2, board));
-		board.getPositions().add(new BoardPosition(1, 0, board));
-		board.getPositions().add(new BoardPosition(1, 1, board));
-		board.getPositions().add(new BoardPosition(1, 2, board));
-		board.getPositions().add(new BoardPosition(2, 0, board));
-		board.getPositions().add(new BoardPosition(2, 1, board));
-		board.getPositions().add(new BoardPosition(2, 2, board));
-		
 		gamePlayService.startGame(game);
 		
 		String firstPlayerUuid = game.getPlayerOne().getUuid();

@@ -51,10 +51,22 @@ public class GamePlayServiceImpl implements GamePlayService {
 
 	@Override
 	public Game startGame(Game game) {
-		if (game.getBoard() == null || game.getPlayerOne() == null || game.getPlayerTow() == null
-				|| game.getBoard().getPositions() == null || game.getBoard().getPositions().isEmpty()) {
+		TicTacToeBoard board = new TicTacToeBoard(game);
+		game.setBoard(board);
+		board.getPositions().add(new BoardPosition(0, 0, board));
+		board.getPositions().add(new BoardPosition(0, 1, board));
+		board.getPositions().add(new BoardPosition(0, 2, board));
+		board.getPositions().add(new BoardPosition(1, 0, board));
+		board.getPositions().add(new BoardPosition(1, 1, board));
+		board.getPositions().add(new BoardPosition(1, 2, board));
+		board.getPositions().add(new BoardPosition(2, 0, board));
+		board.getPositions().add(new BoardPosition(2, 1, board));
+		board.getPositions().add(new BoardPosition(2, 2, board));
+		if (game.getPlayerOne() == null || game.getPlayerTow() == null || 
+				game.getBoard().getPositions() == null || game.getBoard().getPositions().isEmpty()) {
 			throw new ApiException("Somethig went wrong while creating the game", ExceptionType.SERVER_ERROR);
 		}
+		
 		return gameService.save(game);
 	}
 
