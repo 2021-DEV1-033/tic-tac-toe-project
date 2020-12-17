@@ -27,7 +27,12 @@ If you don't have maven installed in you PC you should install it to run this pr
 
 
 cd ./tic-tac-toe
+
+
+
 mvn spring-boot:run
+
+
 
 
 
