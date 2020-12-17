@@ -1,6 +1,7 @@
 package com.fortis.tictactoe.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,7 @@ import com.fortis.tictactoe.tools.TicTacToeTools;
 
 @RestController
 @RequestMapping(path = "/play")
+@CrossOrigin(origins = "http://localhost:4200")
 public class GamePlayController {
 	
 	@Autowired
