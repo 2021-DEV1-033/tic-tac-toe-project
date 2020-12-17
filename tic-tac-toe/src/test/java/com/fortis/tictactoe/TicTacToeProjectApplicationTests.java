@@ -1,10 +1,14 @@
 package com.fortis.tictactoe;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.fortis.tictactoe.entities.BoardPosition;
 import com.fortis.tictactoe.entities.Game;
@@ -15,6 +19,7 @@ import com.fortis.tictactoe.services.GameService;
 import com.fortis.tictactoe.services.PlayerService;
 import com.fortis.tictactoe.services.TicTacToeBoardService;
 
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class TicTacToeProjectApplicationTests {
 	
@@ -58,9 +63,10 @@ class TicTacToeProjectApplicationTests {
 	
 	@Test
 	void boardPositionServiceTest() {
-		BoardPosition boardPosition = boardPositionService.save(new BoardPosition());
+		
+		BoardPosition boardPosition = boardPositionService.save(new BoardPosition(1,3));
 		assertNotNull(boardPosition);
-		assertEquals(boardPosition, boardService.findByUuid(boardPosition.getUuid()));
+		assertEquals(boardPosition, boardPositionService.findByUuid(boardPosition.getUuid()));
 	}
 
 }

@@ -35,8 +35,17 @@ public class BoardPosition extends BaseEntity {
     @ManyToOne(cascade = CascadeType.MERGE)
     private Player player;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private TicTacToeBoard board;
+
+	public BoardPosition() {
+	}
+
+	public BoardPosition(Integer vertical, Integer horizontal) {
+		super();
+		this.vertical = vertical;
+		this.horizontal = horizontal;
+	}
 
 	/**
 	 * @return the id

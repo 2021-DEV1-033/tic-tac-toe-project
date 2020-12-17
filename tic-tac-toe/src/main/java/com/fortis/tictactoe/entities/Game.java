@@ -29,7 +29,7 @@ public class Game extends BaseEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Player playerTow;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private TicTacToeBoard board;
 
 	/**
