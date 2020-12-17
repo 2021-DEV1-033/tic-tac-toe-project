@@ -149,18 +149,25 @@ public class GamePlayServiceImpl implements GamePlayService {
 				linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
 			} else if (pos.getHorizontal().equals(position.getHorizontal())) {
 				linesPositions.get(LineType.HORIZONTAL).add(pos);
-				if (pos.getHorizontal()-position.getHorizontal() == pos.getVertical()-position.getVertical()) {
+				if (position.getVertical()==position.getHorizontal()) {
 					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
 				}
-				if (pos.getHorizontal()-position.getHorizontal() == position.getVertical() - pos.getVertical() ) {
+				if (position.getHorizontal() == position.getHorizontal() && position.getVertical() == position.getVertical() ) {
 					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
 				}
 			} else if (pos.getVertical().equals(position.getVertical())) {
 				linesPositions.get(LineType.VERTICAL).add(pos);
-				if (pos.getHorizontal()-position.getHorizontal() == pos.getVertical()-position.getVertical()) {
+				if (position.getVertical()==position.getHorizontal()) {
 					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
 				}
-				if (pos.getHorizontal()-position.getHorizontal() == position.getVertical() - pos.getVertical() ) {
+				if (position.getHorizontal() == position.getHorizontal() && position.getVertical() == position.getVertical() ) {
+					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
+				}
+			} else {
+				if (position.getVertical()==position.getHorizontal()) {
+					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
+				}
+				if (position.getHorizontal() == position.getHorizontal() && position.getVertical() == position.getVertical() ) {
 					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
 				}
 			}
