@@ -1,5 +1,12 @@
 package com.fortis.tictactoe.enums;
 
+/**
+ * 
+ * The possible exception types
+ * 
+ * @author the developer
+ *
+ */
 public enum ExceptionType {
 
 	/**

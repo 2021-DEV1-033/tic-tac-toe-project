@@ -15,6 +15,14 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortis.tictactoe.entities.base.BaseEntity;
 
+/**
+ * 
+ * This entity is a simplified representation of a player and his checked boxes
+ * 
+ * 
+ * @author the developer
+ *
+ */
 @Entity
 public class Player extends BaseEntity {
 	private static final long serialVersionUID = 1L;

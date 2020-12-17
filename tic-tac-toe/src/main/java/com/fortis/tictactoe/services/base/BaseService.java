@@ -2,6 +2,20 @@ package com.fortis.tictactoe.services.base;
 
 import java.util.Collection;
 
+
+/**
+ * 
+ * This is my standard on project start<br>
+ * This make development of Services, repositories easier and faster and make developer skip
+ * the basics of Repositories and Service development <br>
+ * 
+ * This will be implemented by services
+ * 
+ * @author the developer
+ * 
+ *
+ * @param <T>
+ */
 public interface BaseService<T> {
 	T findByUuid(String uuid);
 	T findById(Long id);

@@ -4,7 +4,18 @@ import java.util.Collection;
 
 import com.fortis.tictactoe.repositories.base.BaseRepository;
 
-
+/**
+ * 
+ * This is my standard on project start<br>
+ * This make development of Services, repositories easier and faster and make developers skip
+ * the basics of Repositories and Service development <br>
+ * 
+ * This the basic services implementation, it can be overridden if developer have a better choice
+ * 
+ * @author karim
+ *
+ * @param <T>
+ */
 public abstract class AbstractBaseServiceImpl<T> implements BaseService<T> {
 
 	protected BaseRepository<T> repository;

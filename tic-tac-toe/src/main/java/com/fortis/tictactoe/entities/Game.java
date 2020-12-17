@@ -13,6 +13,16 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortis.tictactoe.entities.base.BaseEntity;
 
+/**
+ * 
+ * This is the representation of a game party<br>
+ * 
+ * The game have tow players, and a board, the next player attribute represent the player that have permission
+ * to pick the next box
+ * 
+ * @author the developer
+ *
+ */
 @Entity
 public class Game extends BaseEntity {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +40,29 @@ public class Game extends BaseEntity {
 	private Player playerTow;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	private Player nextPlayer;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private TicTacToeBoard board;
+
+	public Game() {
+		this.nextPlayer = playerOne;
+	}
+
+	public Game(Player playerOne, Player playerTow) {
+		super();
+		this.playerOne = playerOne;
+		this.playerTow = playerTow;
+		this.nextPlayer = playerOne;
+	}
+
+	public Game(Player playerOne, Player playerTow, TicTacToeBoard board) {
+		super();
+		this.playerOne = playerOne;
+		this.playerTow = playerTow;
+		this.nextPlayer = playerOne;
+		this.board = board;
+	}
 
 	/**
 	 * @return the id
@@ -86,6 +118,20 @@ public class Game extends BaseEntity {
 	 */
 	public void setBoard(TicTacToeBoard board) {
 		this.board = board;
+	}
+
+	/**
+	 * @return the nextPlayer
+	 */
+	public Player getNextPlayer() {
+		return nextPlayer;
+	}
+
+	/**
+	 * @param nextPlayer the nextPlayer to set
+	 */
+	public void setNextPlayer(Player nextPlayer) {
+		this.nextPlayer = nextPlayer;
 	}
 
 	/**

@@ -17,6 +17,13 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortis.tictactoe.entities.base.BaseEntity;
 
+
+/**
+ * This entity represent the game board, with all the boxes that players can check<br>
+ * 
+ * @author the developer
+ *
+ */
 @Entity
 public class TicTacToeBoard extends BaseEntity {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +39,14 @@ public class TicTacToeBoard extends BaseEntity {
 
 	@OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<BoardPosition> positions = new HashSet<>();
+
+	public TicTacToeBoard() {
+	}
+	
+	public TicTacToeBoard(Game game) {
+		super();
+		this.game = game;
+	}
 
 	/**
 	 * @return the id

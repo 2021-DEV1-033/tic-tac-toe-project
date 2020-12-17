@@ -8,6 +8,13 @@ import com.fortis.tictactoe.repositories.PlayerRepository;
 import com.fortis.tictactoe.services.PlayerService;
 import com.fortis.tictactoe.services.base.AbstractBaseServiceImpl;
 
+
+/**
+ * {@link PlayerServiceImpl} the {@link Player} Service Implementation
+ * 
+ * @author the developer
+ *
+ */
 @Service
 public class PlayerServiceImpl extends AbstractBaseServiceImpl<Player> implements PlayerService {
 	

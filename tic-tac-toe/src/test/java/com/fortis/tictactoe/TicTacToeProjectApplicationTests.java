@@ -1,13 +1,13 @@
 package com.fortis.tictactoe;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.fortis.tictactoe.entities.BoardPosition;
@@ -19,6 +19,13 @@ import com.fortis.tictactoe.services.GameService;
 import com.fortis.tictactoe.services.PlayerService;
 import com.fortis.tictactoe.services.TicTacToeBoardService;
 
+/**
+ * 
+ * Basics services tests
+ * 
+ * @author the developer
+ *
+ */
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class TicTacToeProjectApplicationTests {

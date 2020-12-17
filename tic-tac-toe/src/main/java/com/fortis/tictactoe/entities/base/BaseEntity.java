@@ -17,6 +17,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fortis.tictactoe.tools.DateConstants;
 
+/**
+ * 
+ * This is the base of entities representation, last update date, and creation date, 
+ * and a unique identifier uuid
+ * 
+ * @author the developer
+ *
+ */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity implements Serializable {

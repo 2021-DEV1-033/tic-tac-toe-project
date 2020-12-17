@@ -13,6 +13,15 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fortis.tictactoe.entities.base.BaseEntity;
 
+
+/**
+ * This entity represent the box position in the board<br>
+ * The position can be checked by a player, or empty
+ * If it's not checked, the next player can check it 
+ * and add it to the list of his checked box
+ * @author the developer
+ *
+ */
 @Entity
 public class BoardPosition extends BaseEntity {
 	private static final long serialVersionUID = 1L;
@@ -30,7 +39,7 @@ public class BoardPosition extends BaseEntity {
     private Integer horizontal;
     
     @Column(name = "checked")
-    private boolean checked;
+    private boolean checked = false;
     
     @ManyToOne(cascade = CascadeType.MERGE)
     private Player player;
@@ -45,6 +54,13 @@ public class BoardPosition extends BaseEntity {
 		super();
 		this.vertical = vertical;
 		this.horizontal = horizontal;
+	}
+
+	public BoardPosition(Integer vertical, Integer horizontal, TicTacToeBoard board) {
+		super();
+		this.vertical = vertical;
+		this.horizontal = horizontal;
+		this.board = board;
 	}
 
 	/**

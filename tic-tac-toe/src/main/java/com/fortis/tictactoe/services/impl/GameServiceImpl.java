@@ -8,6 +8,12 @@ import com.fortis.tictactoe.repositories.GameRepository;
 import com.fortis.tictactoe.services.GameService;
 import com.fortis.tictactoe.services.base.AbstractBaseServiceImpl;
 
+/**
+ * {@link GameServiceImpl} the {@link Game} Service Implementation
+ * 
+ * @author the developer
+ *
+ */
 @Service
 public class GameServiceImpl extends AbstractBaseServiceImpl<Game> implements GameService {
 	
