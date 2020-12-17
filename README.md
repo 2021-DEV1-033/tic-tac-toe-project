@@ -19,7 +19,12 @@ npm run start
 
 
 tic-tac-toe based on Spring Boot 2.4 to run it you can just use the terminal 
-If you fon't have maven installed in you PC you should install it to run this project from your terminal, or you can just use Eclipse or any other IDE
+
+
+
+If you don't have maven installed in you PC you should install it to run this project from your terminal, or you can just use Eclipse or any other IDE
+
+
 
 cd ./tic-tac-toe
 mvn spring-boot:run
