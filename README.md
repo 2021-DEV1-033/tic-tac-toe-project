@@ -1,11 +1,18 @@
 # tic-tac-toe-project
 
+The back end takes into consideration the possibility of having parts with dimensions greater than 3x3.
 
-To run this project you need to install Node and angular-cli
+It is for this reason, and also to guarantee a better performance, the position analysis is done for the boxes closest to the last box selected by a player.
+.
 
-tic-tac-toe-simplified-front : is the front end developed with angular, it's just a simplified interface to test the back end project
+Also to give a better scalability, I persist the data of all the played games to give a possibility of adding functionality like remote players with an authentication or public room creation
 
-to run this project you have to go to the prject folder like this spteps :
+
+To run this project you need to install Node and angular-cli.
+
+tic-tac-toe-simplified-front : is the front end developed with angular, it's just a simplified interface to test the back end project.
+
+To run this project you have to go to the prject folder like this spteps:
 
 cd ./tic-tac-toe-simplified-front
 
