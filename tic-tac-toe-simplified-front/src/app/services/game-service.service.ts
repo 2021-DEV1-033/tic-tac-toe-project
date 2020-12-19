@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { 
-	ApiResponse,
-	PlayerModel,
-	BoardPositionModel,
-	Position,
-	GameResult,
-	PickBoxAction,
-	GameModel } from '../types/types';
+  ApiResponse,
+  PlayerModel,
+  BoardPositionModel,
+  Position,
+  GameResult,
+  PickBoxAction,
+  GameModel } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
@@ -26,13 +26,30 @@ export class GameServiceService {
         });
   }
 
-  check(pickBoxAction : PickBoxAction, result : GameResult){
+  check(pickBoxAction : PickBoxAction, result : GameResult, gameTable : any[][]){
     this.http.put<ApiResponse<GameResult>>("http://localhost:3001/play/pick-a-box",
       pickBoxAction).subscribe(res => {
           result.winner = res.data.winner;
           result.wonLineType = res.data.wonLineType;
           result.lastPlayedPosition = res.data.lastPlayedPosition;
           result.gameStatus = res.data.gameStatus;
+          if (result.wonLineType == 'HORIZONTAL') {
+            gameTable[result.lastPlayedPosition.horizontal][0].win = true;
+            gameTable[result.lastPlayedPosition.horizontal][1].win = true;
+            gameTable[result.lastPlayedPosition.horizontal][2].win = true;
+          } else if (result.wonLineType == 'VERTICAL') {
+            gameTable[0][result.lastPlayedPosition.vertical].win = true;
+            gameTable[1][result.lastPlayedPosition.vertical].win = true;
+            gameTable[2][result.lastPlayedPosition.vertical].win = true;
+          }  else if (result.wonLineType == 'LEFT_DIAMETER') {
+            gameTable[0][0].win = true;
+            gameTable[1][1].win = true;
+            gameTable[2][2].win = true;
+          }  else if (result.wonLineType == 'RIGHT_DIAMETER') {
+            gameTable[0][2].win = true;
+            gameTable[1][1].win = true;
+            gameTable[2][0].win = true;
+          }
         });
   }
 

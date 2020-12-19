@@ -1,21 +1,63 @@
-<p>play works!</p>
-<p>{{game.uuid}}</p>
-
-<table *ngIf="gameResult.gameStatus == 'IN_PROGRESS'">
+<table>
 	<tr>
-		<td><button class="case" (click)="play(gameTable[0][0])">{{gameTable[0][0].value}}</button></td>
-		<td><button class="case" (click)="play(gameTable[0][1])">{{gameTable[0][1].value}}</button></td>
-		<td><button class="case" (click)="play(gameTable[0][2])">{{gameTable[0][2].value}}</button></td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[0][0].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[0][0])">
+				{{gameTable[0][0].value}}
+			</button>
+		</td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[0][1].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[0][1])">
+				{{gameTable[0][1].value}}
+			</button>
+		</td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[0][2].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[0][2])">
+				{{gameTable[0][2].value}}
+			</button>
+		</td>
 	</tr>
 	<tr>
-		<td><button class="case" (click)="play(gameTable[1][0])">{{gameTable[1][0].value}}</button></td>
-		<td><button class="case" (click)="play(gameTable[1][1])">{{gameTable[1][1].value}}</button></td>
-		<td><button class="case" (click)="play(gameTable[1][2])">{{gameTable[1][2].value}}</button></td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[1][0].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[1][0])">
+				{{gameTable[1][0].value}}
+			</button>
+		</td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[1][1].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[1][1])">
+				{{gameTable[1][1].value}}
+			</button>
+		</td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'"
+					[class]="gameTable[1][2].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[1][2])">
+				{{gameTable[1][2].value}}
+			</button>
+		</td>
 	</tr>
 	<tr>
-		<td><button class="case" (click)="play(gameTable[2][0])">{{gameTable[2][0].value}}</button></td>
-		<td><button class="case" (click)="play(gameTable[2][1])">{{gameTable[2][1].value}}</button></td>
-		<td><button class="case" (click)="play(gameTable[2][2])">{{gameTable[2][2].value}}</button></td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[2][0].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[2][0])">
+				{{gameTable[2][0].value}}
+			</button>
+		</td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[2][1].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[2][1])">
+				{{gameTable[2][1].value}}
+			</button>
+		</td>
+		<td><button [disabled]="gameResult.gameStatus == 'FINISHED'" 
+					[class]="gameTable[2][2].win ? 'case-won' : 'case'" 
+					(click)="play(gameTable[2][2])">
+				{{gameTable[2][2].value}}
+			</button>
+		</td>
 	</tr>
 </table>
 

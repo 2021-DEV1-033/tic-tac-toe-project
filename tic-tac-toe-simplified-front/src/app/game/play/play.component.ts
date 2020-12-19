@@ -42,7 +42,7 @@ export class PlayComponent implements OnInit {
 				gameUuid : this.game.uuid,
 				vertical : position.vertical,
 				horizontal : position.horizontal
-			}, this.gameResult);
+			}, this.gameResult, this.gameTable);
 			position.value = this.currentplayeruuid == this.game.firstPlayer.uuid ? "X": "O";
 			this.currentplayeruuid = this.currentplayeruuid == this.game.firstPlayer.uuid ?
 				this.game.secondPlayer.uuid : this.game.firstPlayer.uuid;
