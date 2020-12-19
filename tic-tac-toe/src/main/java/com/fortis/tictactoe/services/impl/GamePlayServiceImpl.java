@@ -38,6 +38,13 @@ import com.fortis.tictactoe.tools.TicTacToeTools;
  * This is the main service, the way to start game, and check a box 
  * and retrieve game result
  * 
+ * 
+ * After every boxe-pick action, the system will verify if this action result a winner vertical/horizontal line or diameter
+ * if not, the game continue until all boxes are checked by one of the players.
+ * 
+ * I developed this application, considering that it can be another dimension, more than 3x3 
+ * but steel need a 3 sequence to win.
+ * 
  * @author the developer
  *
  */
@@ -122,6 +129,12 @@ public class GamePlayServiceImpl implements GamePlayService {
 		}
 	}
 	
+	/**
+	 * Get the line type if the last action result a won line else null
+	 * @param board
+	 * @param lastPlayedPosition
+	 * @return
+	 */
 	private LineType findAWinner(TicTacToeBoard board, BoardPosition lastPlayedPosition) {
 		Map<LineType, Set<BoardPosition>> possibleWonBoardLines = getPossibleWonBoardLines(board, lastPlayedPosition);
 		List<LineType> lineTypes = new ArrayList<>(possibleWonBoardLines.keySet());
@@ -133,6 +146,13 @@ public class GamePlayServiceImpl implements GamePlayService {
 		return null;
 	}
 	
+	
+	/**
+	 * Get the map of checked boxes by the current player, filtered by line type
+	 * @param board
+	 * @param position
+	 * @return
+	 */
 	private Map<LineType, Set<BoardPosition>> getPossibleWonBoardLines(TicTacToeBoard board, BoardPosition position) {
 		List<BoardPosition> foundNeighbor = getAllConcernedPositions(board.getPositions(), position);
 		Map<LineType, Set<BoardPosition>> linesPositions = new HashMap<>();
@@ -145,29 +165,33 @@ public class GamePlayServiceImpl implements GamePlayService {
 			if (pos.equals(position)) {
 				linesPositions.get(LineType.VERTICAL).add(pos);
 				linesPositions.get(LineType.HORIZONTAL).add(pos);
-				linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
-				linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
-			} else if (pos.getHorizontal().equals(position.getHorizontal())) {
-				linesPositions.get(LineType.HORIZONTAL).add(pos);
-				if (position.getVertical()==position.getHorizontal()) {
+				if (pos.getVertical()==pos.getHorizontal()) {
 					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
 				}
-				if (position.getHorizontal() == position.getHorizontal() && position.getVertical() == position.getVertical() ) {
+				if (pos.getHorizontal() == 2 - pos.getVertical()) {
+					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
+				}
+			} else if (pos.getHorizontal().equals(position.getHorizontal())) {
+				linesPositions.get(LineType.HORIZONTAL).add(pos);
+				if (pos.getVertical()==pos.getHorizontal()) {
+					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
+				}
+				if (pos.getHorizontal() == 2 - pos.getVertical()) {
 					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
 				}
 			} else if (pos.getVertical().equals(position.getVertical())) {
 				linesPositions.get(LineType.VERTICAL).add(pos);
-				if (position.getVertical()==position.getHorizontal()) {
+				if (pos.getVertical()==pos.getHorizontal()) {
 					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
 				}
-				if (position.getHorizontal() == position.getHorizontal() && position.getVertical() == position.getVertical() ) {
+				if (pos.getHorizontal() == 2 - pos.getVertical()) {
 					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
 				}
 			} else {
-				if (position.getVertical()==position.getHorizontal()) {
+				if (pos.getVertical()==pos.getHorizontal()) {
 					linesPositions.get(LineType.LEFT_DIAMETER).add(pos);
 				}
-				if (position.getHorizontal() == position.getHorizontal() && position.getVertical() == position.getVertical() ) {
+				if (pos.getHorizontal() == 2 - pos.getVertical()) {
 					linesPositions.get(LineType.RIGHT_DIAMETER).add(pos);
 				}
 			}
@@ -175,7 +199,15 @@ public class GamePlayServiceImpl implements GamePlayService {
 		
 		return linesPositions;
 	}
-	
+	/**
+	 * Get the current player checked boxes, in the same vertical or Horizontal line,
+	 * or in the diameter if possible
+	 * 
+	 * 
+	 * @param boardPositions
+	 * @param position
+	 * @return
+	 */
 	List<BoardPosition> getAllConcernedPositions(Collection<BoardPosition> boardPositions, BoardPosition position) {
 		List<BoardPosition> allConcernedPositions = boardPositions.stream()
 		.filter(pos-> pos.isChecked() && pos.getPlayer().equals(position.getPlayer())
