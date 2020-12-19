@@ -1,5 +1,7 @@
 # tic-tac-toe-project
 
+![alt image](https://raw.githubusercontent.com/2021-DEV1-033/tic-tac-toe-project/master/image.png)
+
 The back end takes into consideration the possibility of having parts with dimensions greater than 3x3.
 
 It is for this reason, and also to guarantee a better performance, the position analysis is done for the boxes closest to the last box selected by a player.
